@@ -1,0 +1,20 @@
+_id: spc_8ff0acdd22ca479596bab60018f3e5d9
+type: ApiSpec
+parentId: wrk_675329a57d814968921927d04db3cde1
+modified: 1630909321471
+created: 1630909278200
+fileName: intern-high.yaml
+contents: |-
+  openapi: 3.0.0
+  info:
+    title: Intern-middle/board
+    version: 1.0.0
+  servers:
+    - url: http://localhost:8030/
+  tags:
+  - name: "Post"
+  - name: "Reply"
+  - name: "Comment"
+  - name: "File"
+  paths:
+contentType: yaml
