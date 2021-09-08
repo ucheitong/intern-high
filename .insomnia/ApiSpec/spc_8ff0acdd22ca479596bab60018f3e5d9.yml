@@ -1,0 +1,2853 @@
+_id: spc_8ff0acdd22ca479596bab60018f3e5d9
+type: ApiSpec
+parentId: wrk_675329a57d814968921927d04db3cde1
+modified: 1630915467073
+created: 1630909278200
+fileName: intern-high.yaml
+contents: "openapi: 3.0.0
+
+  info:
+
+  \  title: Intern-middle/board
+
+  \  version: 1.0.0
+
+  servers:
+
+  \  - url: http://localhost:8030/
+
+  tags:
+
+  - name: \"User\"
+
+  - name: \"Friends\"
+
+  - name: \"Post\"
+
+  - name: \"Comment\"
+
+  - name: \"Image\"
+
+
+  paths:
+
+  \  /login:
+
+  \    post:
+
+  \      tags:\ 
+
+  \        - User
+
+  \      description: login
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: login success
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \                   \ 
+
+  \                   \ 
+
+  \  /membership:
+
+  \    post:
+
+  \      tags:
+
+  \        - User
+
+  \      description: create membership\ 
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \                  description: zero is file empty, numbers are fileId
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: create membership success
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \                   \ 
+
+  \  /{userId}/profile:
+
+  \    post:
+
+  \      tags:
+
+  \        - User
+
+  \      description: create user profile
+
+  \      parameters:
+
+  \       - name: userId
+
+  \         in: path
+
+  \         required: true
+
+  \         description: user Id
+
+  \         schema:
+
+  \           type: integer
+
+  \           format: int64
+
+  \           minimum: 1
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: create user profile
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \                   \ 
+
+  \    get:
+
+  \      tags:
+
+  \        - User
+
+  \      description: read user profile
+
+  \      parameters:
+
+  \       - name: userId
+
+  \         in: path
+
+  \         required: true
+
+  \         description: user Id
+
+  \         schema:
+
+  \           type: integer
+
+  \           format: int64
+
+  \           minimum: 1
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: read user profile
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \                   \ 
+
+  \    put:
+
+  \      tags:
+
+  \        - User
+
+  \      description: update user profile
+
+  \      parameters:
+
+  \       - name: userId
+
+  \         in: path
+
+  \         required: true
+
+  \         description: user Id
+
+  \         schema:
+
+  \           type: integer
+
+  \           format: int64
+
+  \           minimum: 1
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: update user profile
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \                   \ 
+
+  \    delete:
+
+  \      tags:
+
+  \        - User
+
+  \      description: delete user profile
+
+  \      parameters:
+
+  \       - name: userId
+
+  \         in: path
+
+  \         required: true
+
+  \         description: user Id
+
+  \         schema:
+
+  \           type: integer
+
+  \           format: int64
+
+  \           minimum: 1
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: delete user profile
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"\ 
+
+  \                   \ 
+
+  \  /{userId}/banner:
+
+  \    post:
+
+  \      tags:
+
+  \        - User
+
+  \      description: create user banner
+
+  \      parameters:
+
+  \       - name: userId
+
+  \         in: path
+
+  \         required: true
+
+  \         description: user Id
+
+  \         schema:
+
+  \           type: integer
+
+  \           format: int64
+
+  \           minimum: 1
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: create user banner
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \                   \ 
+
+  \    get:
+
+  \      tags:
+
+  \        - User
+
+  \      description: read user banner
+
+  \      parameters:
+
+  \       - name: userId
+
+  \         in: path
+
+  \         required: true
+
+  \         description: user Id
+
+  \         schema:
+
+  \           type: integer
+
+  \           format: int64
+
+  \           minimum: 1
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: read user banner
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \                   \ 
+
+  \    put:
+
+  \      tags:
+
+  \        - User
+
+  \      description: update user banner
+
+  \      parameters:
+
+  \       - name: userId
+
+  \         in: path
+
+  \         required: true
+
+  \         description: user Id
+
+  \         schema:
+
+  \           type: integer
+
+  \           format: int64
+
+  \           minimum: 1
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: update user banner
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \                   \ 
+
+  \    delete:
+
+  \      tags:
+
+  \        - User
+
+  \      description: delete user banner
+
+  \      parameters:
+
+  \       - name: userId
+
+  \         in: path
+
+  \         required: true
+
+  \         description: user Id
+
+  \         schema:
+
+  \           type: integer
+
+  \           format: int64
+
+  \           minimum: 1
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: delete user banner
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"                   \ 
+
+  \     \ 
+
+  \  /{userId}/friends:
+
+  \    get:
+
+  \      tags:
+
+  \        - Friends
+
+  \      description: read user friends list
+
+  \      parameters:
+
+  \       - name: userId
+
+  \         in: path
+
+  \         required: true
+
+  \         description: user Id
+
+  \         schema:
+
+  \           type: integer
+
+  \           format: int64
+
+  \           minimum: 1
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: read user friends
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+
+  \  /{userId}/friends/{friendsId}:
+
+  \    post:
+
+  \      tags:
+
+  \        - Friends
+
+  \      description: add friends
+
+  \      parameters:
+
+  \       - name: userId
+
+  \         in: path
+
+  \         required: true
+
+  \         description: my user Id
+
+  \         schema:
+
+  \           type: integer
+
+  \           format: int64
+
+  \           minimum: 1
+
+  \       - name: friendsId
+
+  \         in: path
+
+  \         required: true
+
+  \         description: friends user Id
+
+  \         schema:
+
+  \           type: integer
+
+  \           format: int64
+
+  \           minimum: 1  \ 
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: add friends
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \                   \ 
+
+  \    delete:
+
+  \      tags:
+
+  \        - Friends
+
+  \      description: delete friends
+
+  \      parameters:
+
+  \       - name: userId
+
+  \         in: path
+
+  \         required: true
+
+  \         description: my user Id
+
+  \         schema:
+
+  \           type: integer
+
+  \           format: int64
+
+  \           minimum: 1
+
+  \       - name: friendsId
+
+  \         in: path
+
+  \         required: true
+
+  \         description: friends user Id
+
+  \         schema:
+
+  \           type: integer
+
+  \           format: int64
+
+  \           minimum: 1    \ 
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: delete friends
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"                   \ 
+
+
+
+  \  /{userId}/addFriends:
+
+  \    get:
+
+  \      tags:
+
+  \        - Friends
+
+  \      description: read addFriends list
+
+  \      parameters:
+
+  \       - name: userId
+
+  \         in: path
+
+  \         required: true
+
+  \         description: user Id
+
+  \         schema:
+
+  \           type: integer
+
+  \           format: int64
+
+  \           minimum: 1
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: read addFriends list
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \                   \ 
+
+  \  /{userId}/addFriends/{friendsId}:
+
+  \    post:
+
+  \      tags:
+
+  \        - Friends
+
+  \      description: accept friends request
+
+  \      parameters:
+
+  \       - name: userId
+
+  \         in: path
+
+  \         required: true
+
+  \         description: my user Id
+
+  \         schema:
+
+  \           type: integer
+
+  \           format: int64
+
+  \           minimum: 1
+
+  \       - name: friendsId
+
+  \         in: path
+
+  \         required: true
+
+  \         description: friends Id
+
+  \         schema:
+
+  \           type: integer
+
+  \           format: int64
+
+  \           minimum: 1  \ 
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: accept to add friends
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \                   \ 
+
+  \    delete:
+
+  \      tags:
+
+  \        - Friends
+
+  \      description: reject friend request
+
+  \      parameters:
+
+  \       - name: userId
+
+  \         in: path
+
+  \         required: true
+
+  \         description: my user Id
+
+  \         schema:
+
+  \           type: integer
+
+  \           format: int64
+
+  \           minimum: 1
+
+  \       - name: friendsId
+
+  \         in: path
+
+  \         required: true
+
+  \         description: friends Id
+
+  \         schema:
+
+  \           type: integer
+
+  \           format: int64
+
+  \           minimum: 1  \ 
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: reject friend request
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"                   \ 
+
+
+  \  /search/{searchWord}:
+
+  \    get:
+
+  \      tags:
+
+  \        - Friends
+
+  \      description: search friends
+
+  \      parameters:
+
+  \       - name: searchWord
+
+  \         in: path
+
+  \         required: true
+
+  \         description: user Id
+
+  \         schema:
+
+  \           type: string
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: search friends
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+
+
+  \  /:
+
+  \    get:
+
+  \      tags:
+
+  \        - Post
+
+  \      description: read main pid post
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: read main pid post
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \                   \ 
+
+  \  /{userId}:
+
+  \    get:
+
+  \      tags:
+
+  \        - Post
+
+  \      description: read user pid post
+
+  \      parameters:
+
+  \       - name: userId
+
+  \         in: path
+
+  \         required: true
+
+  \         description: user Id
+
+  \         schema:
+
+  \           type: integer
+
+  \           format: int64
+
+  \           minimum: 1
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: read user pid post
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\" \ 
+
+  \\ 
+
+  \  /{userId}/post:
+
+  \    post:
+
+  \      tags:
+
+  \        - Post
+
+  \      description: create post
+
+  \      parameters:
+
+  \        - name: userId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: user Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: create post
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"\ 
+
+  \                   \ 
+
+  \  /{userId}/post/{postId}:
+
+  \    put:
+
+  \      tags:
+
+  \        - Post
+
+  \      description: update post
+
+  \      parameters:
+
+  \        - name: userId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: user Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: postId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: post Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: update post
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"\ 
+
+  \                   \ 
+
+  \    delete:
+
+  \      tags:
+
+  \        - Post
+
+  \      description: delete post
+
+  \      parameters:
+
+  \        - name: userId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: user Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: postId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: post Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: delete post
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"  \ 
+
+  \                   \ 
+
+  \  /{userId}/post/{postId}/comment:
+
+  \    post:
+
+  \      tags:
+
+  \        - Comment
+
+  \      description: create comment
+
+  \      parameters:
+
+  \        - name: userId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: user Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: postId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: post Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1\ 
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: create comment
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \                   \ 
+
+  \    get:
+
+  \      tags:
+
+  \        - Comment
+
+  \      description: read comment by post id
+
+  \      parameters:
+
+  \        - name: userId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: user Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: postId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: post Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1\ 
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: read comment by post id
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"                   \ 
+
+  \                   \ 
+
+  \       \ 
+
+  \  /{userId}/post/{postId}/comment/{commentId}:
+
+  \    post:
+
+  \      tags:
+
+  \        - Comment
+
+  \      description: like comment
+
+  \      parameters:
+
+  \        - name: userId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: user Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: postId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: post Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: commentId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: comment Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \                  description: zero is file empty, numbers are fileId
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: like comment
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \ \ 
+
+  \    put:
+
+  \      tags:
+
+  \        - Comment
+
+  \      description: update comment
+
+  \      parameters:
+
+  \        - name: userId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: user Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: postId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: post Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: commentId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: comment Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: update comment
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \                   \ 
+
+  \    delete:
+
+  \      tags:
+
+  \        - Comment
+
+  \      description: delete comment
+
+  \      parameters:
+
+  \        - name: userId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: user Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: postId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: post Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: commentId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: comment Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: delete comment
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"\ 
+
+  \                   \ 
+
+  \                   \ 
+
+  \  /{userId}/post/{postId}/{commentId}/comment:
+
+  \    post:
+
+  \      tags:
+
+  \        - Comment
+
+  \      description: create reply comment
+
+  \      parameters:
+
+  \        - name: userId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: user Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: postId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: post Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: commentId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: comment Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: create reply comment
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \                   \ 
+
+  \    get:
+
+  \      tags:
+
+  \        - Comment
+
+  \      description: read reply comment
+
+  \      parameters:
+
+  \        - name: userId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: user Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: postId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: post Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: commentId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: comment Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: read reply comment
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"\ 
+
+  \                   \ 
+
+  \  /{userId}/post/{postId}/{commentId}/comment/{recommentId}:
+
+  \    post:
+
+  \      tags:
+
+  \        - Comment
+
+  \      description: like reply recomment
+
+  \      parameters:
+
+  \        - name: userId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: user Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: postId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: post Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: commentId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: comment Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: recommentId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: recomment Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: like reply comment
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \    put:
+
+  \      tags:
+
+  \        - Comment
+
+  \      description: update reply comment
+
+  \      parameters:
+
+  \        - name: userId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: user Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: postId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: post Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: commentId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: comment Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: recommentId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: recomment Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: update reply comment
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \                   \ 
+
+  \    delete:
+
+  \      tags:
+
+  \        - Comment
+
+  \      description: delete reply comment
+
+  \      parameters:
+
+  \        - name: userId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: user Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: postId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: post Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: commentId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: comment Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: recommentId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: recomment Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \      requestBody:
+
+  \        content:
+
+  \          application/json:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                name:
+
+  \                  type: string
+
+  \                  example: \"name\"
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: delete reply comment
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"\ 
+
+  \                   \ 
+
+  \  /image/upload:
+
+  \    post:
+
+  \      tags:\ 
+
+  \        - Image
+
+  \      description: image upload
+
+  \      requestBody:
+
+  \        content:
+
+  \          multipart/form-data:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                files:
+
+  \                  type: array
+
+  \                  items:
+
+  \                    type: string
+
+  \                    format: binary
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: image upload
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \  \ 
+
+  \  /image/download/{imageId}:  \ 
+
+  \    get:
+
+  \      tags:\ 
+
+  \        - Image
+
+  \      description: image download
+
+  \      parameters:
+
+  \        - name: imageId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: image id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: image download
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  fileInfo:\ 
+
+  \                    type: string
+
+  \                    example: \"file info\" \ 
+
+  \                   \ 
+
+  \  /image/{imageId}/{tagId}/{userId}:
+
+  \    post:
+
+  \      tags:\ 
+
+  \        - Image
+
+  \      description: create image tag
+
+  \      parameters:
+
+  \        - name: imageId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: image Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: tagId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: tag Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: userId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: user Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \      requestBody:
+
+  \        content:
+
+  \          multipart/form-data:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                files:
+
+  \                  type: array
+
+  \                  items:
+
+  \                    type: string
+
+  \                    format: binary
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: create image tag
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \                       \ 
+
+  \  /image/{imageId}/{tagId}:
+
+  \    get:
+
+  \      tags:\ 
+
+  \        - Image
+
+  \      description: read tag
+
+  \      parameters:
+
+  \        - name: imageId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: image Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: tagId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: tag Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \      requestBody:
+
+  \        content:
+
+  \          multipart/form-data:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                files:
+
+  \                  type: array
+
+  \                  items:
+
+  \                    type: string
+
+  \                    format: binary
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: read tag
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"
+
+  \                   \ 
+
+  \    delete:
+
+  \      tags:\ 
+
+  \        - Image
+
+  \      description: delete tag
+
+  \      parameters:
+
+  \        - name: imageId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: image Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \        - name: tagId
+
+  \          in: path
+
+  \          required: true
+
+  \          description: tag Id
+
+  \          schema:
+
+  \            type: integer
+
+  \            format: int64
+
+  \            minimum: 1
+
+  \      requestBody:
+
+  \        content:
+
+  \          multipart/form-data:
+
+  \            schema:
+
+  \              type: object
+
+  \              properties:
+
+  \                files:
+
+  \                  type: array
+
+  \                  items:
+
+  \                    type: string
+
+  \                    format: binary
+
+  \      responses:
+
+  \        '200':\ 
+
+  \          description: delete tag
+
+  \          content:
+
+  \            application/json:
+
+  \              schema:
+
+  \                type: object
+
+  \                properties:
+
+  \                  id:\ 
+
+  \                    type: string
+
+  \                    example: \"200\"                   \ 
+
+  \                    "
+contentType: yaml
